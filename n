@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # Author: Nishad Trivedi
 
@@ -17,7 +17,9 @@ import os
 
 
 def main():
-    if sys.argv[1] in ["-h", "help"]:
+    if len(sys.argv) < 2:
+        help()
+    elif sys.argv[1] in ["-h", "help"]:
         help()
     elif sys.argv[1] in ["-v", "version"]:
         version()
@@ -79,17 +81,17 @@ def create():
                 f.close()
 
 def version():
-    version = 0.2
+    version = 0.3
     print "Using v%s" % version
 
 
 def help():
     print """\n
-               n.py [file] [notes]           Writes notes into file.txt (notes.txt by default)
-               n.py [-r, read] [file]        Read notes from file (notes.txt by default)
-               n.py [-d, delete] [file]      Deletes file (notes.txt by default)
-               n.py [-h, help]               Opens help menu
-               n.py [-v, version]            Version number
+               n [file] [notes]           Writes notes into file.txt (notes.txt by default)
+               n [-r, read] [file]        Read notes from file (notes.txt by default)
+               n [-d, delete] [file]      Deletes file (notes.txt by default)
+               n [-h, help]               Opens help menu
+               n [-v, version]            Version number
              \n
           """
 
